@@ -80,8 +80,8 @@
     :changed-files   files}))
 
 (defn rebuild-cljs
-  "Tell a Figwheel server component to rebuild all ClojureScript source files,
-  and to send the new code to the connected clients."
+  "Tell a Figwheel server to rebuild all ClojureScript source files, and to
+  send the new code to the connected clients."
   [{:keys [server prepped]}]
   (doseq [{:keys [source-paths] :as build} prepped]
     (let [files (map str (find-files source-paths))]
@@ -89,15 +89,15 @@
       (start-build build server files))))
 
 (defn build-cljs
-  "Tell a Figwheel server component to build any modified ClojureScript source
-  files, and to send the new code to the connected clients."
+  "Tell a Figwheel server to build any modified ClojureScript source files, and
+  to send the new code to the connected clients."
   [{:keys [server prepped]}]
   (doseq [{:keys [watcher] :as build} prepped]
     (when-let [files (seq (map str (watcher)))]
       (start-build build server files))))
 
 (defn refresh-css
-  "Tell a Figwheel server component to update the CSS of connected clients."
+  "Tell a Figwheel server to update the CSS of connected clients."
   [{:keys [server css-watch]}]
   (fig-css/handle-css-notification {:figwheel-server server} (css-watch)) nil)
 

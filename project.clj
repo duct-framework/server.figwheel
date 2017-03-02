@@ -9,7 +9,7 @@
                  [http-kit "2.2.0"]
                  [integrant "0.2.1"]]
   :profiles
-  {:provided {:dependencies [[org.clojure/clojurescript "1.8.51"]]}
+  {:provided {:dependencies [[org.clojure/clojurescript "1.9.494"]]}
    :dev {:source-paths   ["dev/src/clj"]
          :resource-paths ["dev/resources" "target/js"]
          :dependencies [[integrant/repl "0.1.0"]

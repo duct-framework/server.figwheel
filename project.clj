@@ -7,7 +7,7 @@
                  [com.cemerick/piggieback "0.2.1"]
                  [figwheel-sidecar "0.5.8"]
                  [http-kit "2.2.0"]
-                 [integrant "0.2.1"]]
+                 [integrant "0.2.3"]]
   :profiles
   {:provided {:dependencies [[org.clojure/clojurescript "1.9.494"]]}
    :dev {:source-paths   ["dev/src/clj"]

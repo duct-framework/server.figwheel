@@ -10,7 +10,7 @@
                  [integrant "0.2.3"]
                  [integrant/repl "0.1.1"]]
   :profiles
-  {:provided {:dependencies [[org.clojure/clojurescript "1.9.494"]]}
+  {:provided {:dependencies [[org.clojure/clojurescript "1.9.521"]]}
    :dev {:source-paths   ["dev/src/clj"]
          :resource-paths ["dev/resources" "target/js"]
          :dependencies [[integrant/repl "0.1.0"]

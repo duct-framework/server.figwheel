@@ -4,7 +4,8 @@
             [compojure.route :as route]
             [duct.server.figwheel :as figwheel]
             [duct.server.http.jetty :as jetty]
-            [integrant.repl :refer [system init halt go clear reset]]))
+            [integrant.repl :refer [init halt go clear reset]]
+            [integrant.repl.state :refer [system]]))
 
 (defroutes app-routes
   (GET "/" [] (io/resource "public/index.html"))

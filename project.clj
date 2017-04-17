@@ -14,7 +14,7 @@
    :dev {:source-paths   ["dev/src/clj"]
          :resource-paths ["dev/resources" "target/js"]
          :dependencies [[integrant/repl "0.1.0"]
-                        [duct/server.http.jetty "0.1.0-SNAPSHOT"]
+                        [duct/server.http.jetty "0.1.0"]
                         [compojure "1.5.1"]
                         [figwheel "0.5.8"]
                         [org.clojure/tools.nrepl "0.2.12"]]

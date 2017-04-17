@@ -1,4 +1,4 @@
-(defproject duct/server.figwheel "0.1.0-SNAPSHOT"
+(defproject duct/server.figwheel "0.1.0"
   :description "Integrant methods for running Figwheel"
   :url "https://github.com/duct-framework/server.figwheel"
   :license {:name "Eclipse Public License"

@@ -14,7 +14,7 @@ ClojureScript for a production release, use [compiler.cljs][].
 
 To install, add the following to your project `:dependencies`:
 
-    [duct/server.figwheel "0.1.2"]
+    [duct/server.figwheel "0.1.3"]
 
 ## Usage
 

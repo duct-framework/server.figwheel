@@ -9,7 +9,7 @@
                  [compojure "1.6.0"]
                  [figwheel-sidecar "0.5.8"]
                  [http-kit "2.2.0"]
-                 [integrant "0.3.3"]
+                 [integrant "0.4.0"]
                  [integrant/repl "0.2.0"]
                  [ring/ring-core "1.6.1"]]
   :profiles

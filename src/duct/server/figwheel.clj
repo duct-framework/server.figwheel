@@ -17,6 +17,8 @@
             [org.httpkit.server :as httpkit]
             [ring.middleware.cors :as cors]))
 
+(derive :duct.server/figwheel :duct/server)
+
 (defrecord FigwheelBuild [])
 
 (defrecord FigwheelServer []

@@ -2,10 +2,13 @@
   (:require [clojure.java.io :as io]
             [compojure.core :refer [defroutes GET]]
             [compojure.route :as route]
+            [duct.core :as duct]
             [duct.server.figwheel :as figwheel]
             [duct.server.http.jetty :as jetty]
             [integrant.repl :refer [init halt go clear reset]]
             [integrant.repl.state :refer [system]]))
+
+(duct/load-hierarchy)
 
 (defroutes app-routes
   (GET "/" [] (io/resource "public/index.html"))

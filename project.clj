@@ -8,7 +8,7 @@
                  [com.cemerick/piggieback "0.2.2"]
                  [compojure "1.6.0"]
                  [duct/core "0.6.0"]
-                 [figwheel-sidecar "0.5.8"]
+                 [figwheel-sidecar "0.5.13"]
                  [http-kit "2.2.0"]
                  [integrant "0.6.1"]
                  [integrant/repl "0.2.0"]
@@ -18,6 +18,6 @@
    :dev {:source-paths   ["dev/src/clj"]
          :resource-paths ["dev/resources" "target/js"]
          :dependencies [[duct/server.http.jetty "0.2.0"]
-                        [figwheel "0.5.8"]
+                        [figwheel "0.5.13"]
                         [org.clojure/tools.nrepl "0.2.13"]]
          :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}})

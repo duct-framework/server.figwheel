@@ -7,7 +7,7 @@
                  [org.clojure/core.async "0.3.443"]
                  [com.cemerick/piggieback "0.2.2"]
                  [compojure "1.6.0"]
-                 [duct/core "0.6.0"]
+                 [duct/core "0.6.1"]
                  [figwheel-sidecar "0.5.13"]
                  [http-kit "2.2.0"]
                  [integrant "0.6.1"]

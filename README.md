@@ -18,7 +18,7 @@ To install, add the following to your project `:dependencies`:
 
 ## Usage
 
-This library provides the `:duct.compiler/cljs` key, and accepts the
+This library provides the `:duct.server/figwheel` key, and accepts the
 same options as Figwheel.
 
 ```edn

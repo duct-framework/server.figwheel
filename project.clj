@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/core.async "0.4.490"]
-                 [com.cemerick/piggieback "0.2.2"]
+                 [cider/piggieback "0.3.10"]
                  [compojure "1.6.1"]
                  [duct/core "0.7.0"]
                  [figwheel-sidecar "0.5.18"]

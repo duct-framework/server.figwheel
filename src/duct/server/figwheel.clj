@@ -1,6 +1,6 @@
 (ns duct.server.figwheel
   "Integrant methods for running a Figwheel server."
-  (:require [cemerick.piggieback :as piggieback]
+  (:require [cider.piggieback :as piggieback]
             [cljs.repl :as repl]
             [cljs.stacktrace :as stacktrace]
             [clojure.java.io :as io]

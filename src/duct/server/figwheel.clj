@@ -136,4 +136,6 @@
   ([{:keys [server prepped]}]
    (start-piggieback-repl server (first prepped)))
   ([{:keys [server prepped]} build-id]
-   (start-piggieback-repl server (-> (group-by :id prepped) (get build-id)))))
+   (start-piggieback-repl server (-> (group-by :id prepped)
+                                     (get build-id)
+                                     first))))

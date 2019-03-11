@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/core.async "0.4.490"]
-                 [cider/piggieback "0.3.10"]
+                 [cider/piggieback "0.4.0"]
                  [compojure "1.6.1"]
                  [duct/core "0.7.0"]
                  [figwheel-sidecar "0.5.18"]
@@ -19,5 +19,5 @@
          :resource-paths ["dev/resources" "target/js"]
          :dependencies [[duct/server.http.jetty "0.2.0"]
                         [figwheel "0.5.18"]
-                        [org.clojure/tools.nrepl "0.2.13"]]
-         :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}})
+                        [nrepl "0.6.0"]]
+         :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}}})

@@ -17,6 +17,9 @@
             [org.httpkit.server :as httpkit]
             [ring.middleware.cors :as cors]))
 
+(def ^:const default-source-files-pattern "\\.clj[sc]$")
+(def ^:const default-css-files-pattern "\\.css$")
+
 (defrecord FigwheelBuild [])
 
 (defrecord FigwheelServer []
@@ -51,8 +54,11 @@
         server (figwheel-server state)]
     (map->FigwheelServer (assoc state :http-server server))))
 
-(defn- find-files [paths]
-  (mapcat (comp file-seq io/file) paths))
+(defn- find-files [{:keys [paths files-pattern]}]
+  (let [files (mapcat (comp file-seq io/file) paths)]
+    (if files-pattern
+      (filter #(re-find (re-pattern files-pattern) (.getPath %)) files)
+      files)))
 
 (defn- watch-paths [paths]
   (let [time (volatile! 0)]
@@ -63,11 +69,14 @@
           (vreset! time now)
           (filter #(> (.lastModified %) then) (find-files paths)))))))
 
-(defn- prep-build [{:keys [compiler-env source-paths] :as build}]
+(defn- prep-build [{:keys [compiler-env source-paths source-files-pattern] :as build}]
   (-> build
+      (dissoc :source-files-pattern)
       (cond-> (not (fig-config/prepped? build)) fig-config/prep-build)
       (cond-> (not compiler-env)                fig-build/add-compiler-env)
-      (assoc :watcher (watch-paths source-paths))
+      (assoc :watcher (watch-paths {:paths source-paths
+                                    :files-pattern (or source-files-pattern
+                                                       default-source-files-pattern)}))
       (map->FigwheelBuild)))
 
 (defn- clean-build [build]
@@ -83,8 +92,8 @@
   "Tell a Figwheel server to rebuild all ClojureScript source files, and to
   send the new code to the connected clients."
   [{:keys [server prepped]}]
-  (doseq [{:keys [source-paths] :as build} prepped]
-    (let [files (map str (find-files source-paths))]
+  (doseq [{:keys [source-paths source-files-pattern] :as build} prepped]
+    (let [files (map str (find-files {:path source-paths, :files-pattern source-files-pattern}))]
       (fig-util/clean-cljs-build* build)
       (start-build build server files))))
 
@@ -101,10 +110,14 @@
   [{:keys [server css-watch]}]
   (fig-css/handle-css-notification {:figwheel-server server} (css-watch)) nil)
 
-(defmethod ig/init-key :duct.server/figwheel [_ {:keys [builds css-dirs] :as opts}]
+(defmethod ig/init-key :duct.server/figwheel [_ {:keys [builds css-dirs css-files-pattern] :as opts}]
   (doto {:server    (start-figwheel-server opts)
          :prepped   (mapv prep-build builds)
-         :css-watch (if css-dirs (watch-paths css-dirs) (fn []))}
+         :css-watch (if css-dirs
+                      (watch-paths {:paths css-dirs
+                                    :files-pattern (or css-files-pattern
+                                                       default-css-files-pattern)})
+                      (fn []))}
     (build-cljs)
     (refresh-css)))
 
